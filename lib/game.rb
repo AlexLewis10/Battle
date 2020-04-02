@@ -1,5 +1,5 @@
 class Game
-  attr_reader :player_one, :player_two
+  attr_accessor :player_one, :player_two
   
   def initialize
     @player_one
