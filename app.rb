@@ -19,6 +19,12 @@ class Battle < Sinatra::Base
     erb :play
   end
 
+  post '/attacked_player_1' do
+    $player_2.take_damage
+    $attacked = $player_1.name
+    redirect '/confirm_hit'
+  end
+
   post '/attacked_player_2' do
     $player_1.take_damage
     $attacked = $player_2.name
@@ -28,12 +34,6 @@ class Battle < Sinatra::Base
   get '/confirm_hit' do
     @attacked = $attacked
     erb(:attacking)
-  end
-
-  post '/attacked_player_1' do
-    $player_2.take_damage
-    $attacked = $player_1.name
-    redirect '/confirm_hit'
   end
 
   get '/' do
