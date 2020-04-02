@@ -14,4 +14,7 @@ describe Game do
   it 'responds to player one' do
     expect(subject).to respond_to(:player_one)
   end
+  it 'responds to player two' do
+    expect(subject).to respond_to(:player_two)
+  end
 end
