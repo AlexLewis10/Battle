@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/player'
+require './lib/game'
 
 class Battle < Sinatra::Base
   enable :session_secret, "Hello"
@@ -20,13 +21,13 @@ class Battle < Sinatra::Base
   end
 
   post '/attacked_player_1' do
-    $player_2.take_damage
+    $game.attack($player_2)
     $attacked = $player_1.name
     redirect '/confirm_hit'
   end
 
   post '/attacked_player_2' do
-    $player_1.take_damage
+    $game.attack($player_1)
     $attacked = $player_2.name
     redirect '/confirm_hit'
   end
@@ -37,6 +38,7 @@ class Battle < Sinatra::Base
   end
 
   get '/' do
+    $game = Game.new
     erb :index
   end
 
