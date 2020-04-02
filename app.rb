@@ -12,6 +12,7 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
+    @game = $game
     @player_1_name = $game.player_one.name
     @player_1_health = $game.player_one.health
     @player_2_name = $game.player_two.name
@@ -32,6 +33,7 @@ class Battle < Sinatra::Base
   end
 
   get '/confirm_hit' do
+    $game.switch
     @attacked = $attacked
     erb(:attacking)
   end

@@ -16,7 +16,25 @@ describe Game do
   it 'responds to player one' do
     expect(subject).to respond_to(:player_one)
   end
+
   it 'responds to player two' do
     expect(subject).to respond_to(:player_two)
+  end
+
+  it 'responds to turn' do
+    expect(subject).to respond_to :turn
+  end
+
+  it 'responds to switch' do
+    expect(subject).to respond_to :switch
+  end
+
+  it 'switch changes turn' do
+    expect{subject.switch}.to change{subject.turn}
+  end
+
+  it do
+    subject.switch
+    expect{subject.switch}.to change{subject.turn}
   end
 end

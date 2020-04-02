@@ -1,9 +1,13 @@
 <%= @player_1_name %> vs. <%= @player_2_name %>
 <p><%= @player_1_name %>: <%=@player_2_health%>HP</p>
+<% if @game.turn == 1 %>
 <form action='/attacked_player_2' method ='post'>
   <input type="submit" value="Attack Player 2">
 </form>
+<% end %>
 <p><%= @player_2_name %>: <%=@player_1_health%>HP</p>
+<% if @game.turn == 2 %>
 <form action='/attacked_player_1' method ='post'>
   <input type="submit" value="Attack Player 1">
 </form>
+<% end %>
