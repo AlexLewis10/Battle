@@ -10,4 +10,9 @@ describe Game do
     expect(player).to receive :take_damage
     subject.attack(player)
   end
+
+  it 'responds to player one' do
+    expect(subject).to respond_to(:player_one)
+  end
+
 end
